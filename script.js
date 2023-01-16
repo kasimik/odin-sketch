@@ -3,6 +3,15 @@ let myDivs = [];
 let size = 256;
 let root = document.querySelector(':root');
 
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
 function createDiv() {
   var boardDiv = document.createElement("div");
 
@@ -20,7 +29,9 @@ function createNewDivs() {
     
     myDivs.forEach((cell) => {
       cell.addEventListener('mouseover', function(e) {
-        this.classList.add("hover");
+        /*root.style.setProperty('--changedColor', getRandomColor());
+        this.classList.add("hover");*/
+        this.setAttribute('style', `background-color: ${getRandomColor()}`);
       });
     });
   }
@@ -36,11 +47,16 @@ function clearBoard () {
   function resetBoard () {
     let numColumns = prompt("Enter number of columns.");
 
-    size = numColumns * numColumns;
+    if (numColumns <= 100) {
+      size = numColumns * numColumns;
 
-    clearBoard();
-    root.style.setProperty('--columnNumber', numColumns);
-    createNewDivs();
+      clearBoard();
+      root.style.setProperty('--columnNumber', numColumns);
+      createNewDivs();
+    } else {
+      alert("Max number of columns = 100");
+    }
+    
   }
 
 

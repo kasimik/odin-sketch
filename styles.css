@@ -1,5 +1,6 @@
 :root {
   --columnNumber: 16;
+  --changedColor: blue;
 }
 
 .container {
@@ -21,9 +22,11 @@
 #controls {
   grid-row: 2/3;
   width: 960px;
-  background-color: green;
+  background-color: lightblue;
 
   display: grid;
+  align-items: center;
+  justify-content: center;
 }
 
 .cell {
@@ -32,7 +35,7 @@
 }
 
 .hover {
-  background-color: red;
+  background-color: var(--changedColor);
 }
 
 button {
@@ -42,4 +45,5 @@ button {
   color: white;
   font-size: 16px;
   text-align: center;
+  padding: 16px 32px;
 }
